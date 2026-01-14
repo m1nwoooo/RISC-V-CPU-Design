@@ -2,20 +2,14 @@
 Design and implement a RISC-V CPU, then compile C code using the GCC compiler and load it as firmware for verification
 
 
-# RV32I SoC (System-on-Chip)
-
-Verilog HDL을 사용한 RISC-V RV32I 프로세서 기반 SoC 설계 및 구현
-
-![Block Diagram](rv32i_soc_diagram.png)
-
 ## 🚀 프로젝트 개요
 
 RISC-V RV32I 명령어 집합을 기반으로 한 32-bit 프로세서와 주변장치를 통합한 완전한 SoC 시스템입니다. 기본적인 ALU 연산부터 시작하여 점차 복잡한 모듈을 통합하는 Bottom-up 방식으로 설계되었으며, FPGA에 배포 가능한 형태로 구현되었습니다.
 
 ### 주요 특징
 
-- **완전한 RV32I ISA 지원**: 40개 명령어 구현 (산술, 논리, 분기, 점프, 메모리 접근)
-- **통합된 주변장치**: GPIO, UART, SPI, Keypad 컨트롤러
+- **RV32I ISA**: 40개 instruction 구현
+
 - **메모리 맵 I/O**: 주소 디코딩을 통한 효율적인 주변장치 제어
 - **듀얼 포트 메모리**: 명령어 페치와 데이터 접근 동시 처리
 - **FIFO 기반 통신**: UART TX/RX 버퍼링으로 안정적인 시리얼 통신
@@ -23,23 +17,7 @@ RISC-V RV32I 명령어 집합을 기반으로 한 32-bit 프로세서와 주변�
 
 ### 시스템 구조
 
-```
-[외부 입력] → [PLL] → [클럭 생성]
-                          ↓
-    ┌──────────────────────────────────────┐
-    │          RV32I_SoC                    │
-    │                                       │
-    │  [CPU Core] ← → [Address Decoder]   │
-    │     ↕                    ↓            │
-    │  [2-Port RAM]    [Peripherals]       │
-    │                   • GPIO              │
-    │                   • UART              │
-    │                   • SPI               │
-    │                   • Keypad            │
-    └──────────────────────────────────────┘
-                          ↓
-              [7-Segment, LED, UART, SPI]
-```
+<img width="1835" height="1011" alt="image" src="https://github.com/user-attachments/assets/fab14be0-9375-42e9-b46c-d896d29ea6f3" />
 
 ## 메모리 맵
 
@@ -157,4 +135,4 @@ RV32I_SoC/
 
 
 
-<img width="1835" height="1011" alt="image" src="https://github.com/user-attachments/assets/fab14be0-9375-42e9-b46c-d896d29ea6f3" />
+
