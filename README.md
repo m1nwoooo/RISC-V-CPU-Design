@@ -4,7 +4,9 @@ Design and implement a RISC-V CPU, then compile C code using the GCC compiler an
 
 ## 🚀 프로젝트 개요
 
-RISC-V RV32I 구조를 기반으로 한 SoC 시스템입니다. ALU 연산부터 시작하여 UART, SPI 등의 통신 모듈을 통합하는 Bottom-up 방식으로 설계되었습니다.
+RISC-V RV32I 구조를 기반으로 한 SoC 시스템입니다.
+
+ALU 연산부터 시작하여 UART, SPI 등의 통신 모듈을 통합하는 Bottom-up 방식으로 설계되었습니다.
 
 ### 주요 특징
 
