@@ -4,16 +4,15 @@ Design and implement a RISC-V CPU, then compile C code using the GCC compiler an
 
 ## 🚀 프로젝트 개요
 
-RISC-V RV32I 명령어 집합을 기반으로 한 32-bit 프로세서와 주변장치를 통합한 완전한 SoC 시스템입니다. 기본적인 ALU 연산부터 시작하여 점차 복잡한 모듈을 통합하는 Bottom-up 방식으로 설계되었으며, FPGA에 배포 가능한 형태로 구현되었습니다.
+RISC-V RV32I 구조를 기반으로 한 SoC 시스템입니다. ALU 연산부터 시작하여 UART, SPI 등의 통신 모듈을 통합하는 Bottom-up 방식으로 설계되었습니다.
 
 ### 주요 특징
 
 - **RV32I ISA**: 40개 instruction 구현
-
-- **메모리 맵 I/O**: 주소 디코딩을 통한 효율적인 주변장치 제어
-- **듀얼 포트 메모리**: inst fetch / data access 동시에 처리
+- **Memory Map I/O**: addr decoding을 통한 peripheral register 제어
+- **Dual Port Memory**: inst fetch / data access 동시에 처리
 - **FIFO 기반 통신**: UART TX/RX 버퍼링으로 안정적인 시리얼 통신
-- **검증 완료**: Testbench를 통한 기능 검증 및 C 코드 실행 테스트
+- **Verification**: Testbench를 통한 기능 검증 및 C 코드 실행 테스트
 
 ### 시스템 구조
 
