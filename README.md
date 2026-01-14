@@ -31,9 +31,6 @@ RISC-V RV32I 명령어 집합을 기반으로 한 32-bit 프로세서와 주변�
 
 ## 🛠️ 개발 과정 및 핵심 모듈
 
-### Phase 1: ALU 및 레지스터 파일
-
-**목표**: CPU의 핵심 연산 장치 구현
 
 **구현 내용**:
 - **ALU (alu.v)**: 10가지 연산 지원
@@ -43,20 +40,6 @@ RISC-V RV32I 명령어 집합을 기반으로 한 32-bit 프로세서와 주변�
   - 비교: SLT, SLTU
   - 상태 플래그: N, Z, C, V
 
-- **Register File (regfile.v)**: 32개 범용 레지스터
-  - x0: 항상 0 (하드와이어드)
-  - x1-x31: 32-bit 레지스터
-  - 듀얼 포트 읽기, 단일 포트 쓰기
-
-**검증**: 
-- 다양한 입력 조합으로 연산 결과 확인
-- 오버플로우 및 플래그 동작 테스트
-
-### Phase 2: CPU 코어 구현
-
-**목표**: RV32I 명령어 실행 파이프라인 구성
-
-**구현 내용**:
 - **rv32i_cpu.v**: 단일 사이클 CPU 코어
   - Fetch: PC를 통한 명령어 읽기
   - Decode: 명령어 필드 분리 (opcode, funct3, funct7, rs1, rs2, rd)
@@ -64,13 +47,6 @@ RISC-V RV32I 명령어 집합을 기반으로 한 32-bit 프로세서와 주변�
   - Memory: Load/Store 처리
   - Write Back: 결과를 레지스터에 저장
 
-**지원 명령어**:
-- **R-type**: ADD, SUB, AND, OR, XOR, SLL, SRL, SRA, SLT, SLTU
-- **I-type**: ADDI, SLTI, XORI, ORI, ANDI, SLLI, SRLI, SRAI, LB, LH, LW, LBU, LHU, JALR
-- **S-type**: SB, SH, SW
-- **B-type**: BEQ, BNE, BLT, BGE, BLTU, BGEU
-- **U-type**: LUI, AUIPC
-- **J-type**: JAL
 
 **제어 신호 생성**:
 ```verilog
@@ -110,28 +86,6 @@ opcode → alusrc, regwrite, memwrite, alucontrol
 - [ ] 캐시 메모리
 - [ ] DMA 컨트롤러
 
-## 파일 구조
-
-```
-RV32I_SoC/
-├── rtl/
-│   ├── rv32i_cpu.v         # CPU 코어
-│   ├── alu.v               # ALU
-│   ├── regfile.v           # 레지스터 파일
-│   ├── RV32I_SoC.v         # Top-level
-│   ├── ram2port_2048x32.v  # 듀얼 포트 RAM
-│   ├── Addr_Decoder.v      # 주소 디코더
-│   ├── GPIO.v              # GPIO 컨트롤러
-│   ├── UART.v              # UART (FIFO 포함)
-│   ├── FIFO.v              # 범용 FIFO
-│   ├── SPI.v               # SPI 마스터
-│   └── Keypad.v            # 키패드 인터페이스
-├── testbench/
-│   └── tb_RV32I_SoC.v      # 전체 테스트벤치
-├── software/
-│   └── c.c                 # 예제 C 코드 (SPI 테스트)
-└── README.md
-```
 
 
 
